@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Typing game</title>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+        <script type="text/javascript" src="keypress-2.0.2.min.js"></script>
+    </head>
+    
+    <body>
+      <canvas id="a" width="300" height="300"></canvas>
+
+      <script>
+      window.onload = downScripts;
+      
+      function downScripts() {
+        var element = document.createElement("script");
+        element.src = "script.js";
+        document.body.appendChild(element);
+      }
+      </script>
+    </body>
+    
+</html>
