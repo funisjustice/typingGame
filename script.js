@@ -39,9 +39,32 @@ var addBonus = function(bonus) {
     cxt.fillText("+" + bonus, 25,35);
 };
 
-var drawWord = function(word, x, y) {
-    cxt.font = "30px Arial";
-    cxt.fillText(word, x, y);
+var drawWord = function(word) {
+  switch(word.length) {
+		case 6:
+			var xCoordinate = 160;
+			break;
+		case 7:
+			var xCoordinate = 158;
+			break;
+		case 8:
+			var xCoordinate = 153;
+			break;
+		case 9:
+			var xCoordinate = 145;
+			break;
+		case 10:
+			var xCoordinate = 140;
+			break;
+		case 12:
+			var xCoordinate = 128;
+			break;
+		default:
+			var xCoordinate = 110;
+	}
+	
+	cxt.font = "25px Arial";
+	cxt.fillText(word, xCoordinate, 160);
 };
 
 var render = function() {
@@ -62,7 +85,7 @@ var takeTurn = function() {
     render();
     
     currentWord = pickWord();
-    drawWord(currentWord, 160, 160);
+    drawWord(currentWord);
     
     var tries = 0;
     var notCorrect = true;
@@ -96,10 +119,10 @@ var mainLoop = function(numTurns) {
 // game starts here
 
 render();
-drawWord(currentWord, 130, 160);
+drawWord(currentWord);
 
-cxt.font = "25px Arial";
-cxt.fillText("Press enter to start", 100, 270);
+cxt.font = "20px Arial";
+cxt.fillText("Press enter to start", 110, 270);
 
 var listener = new window.keypress.Listener();
 
@@ -111,6 +134,8 @@ listener.simple_combo("enter", function() {
     
   currentWord = "Total score:";
   cxt.font = "30px Arial";
-  cxt.fillText(currentWord, 150, 160);
-  cxt.fillText(playerScore, 185, 185);
+  cxt.fillText("Thanks for", 130, 25);
+  cxt.fillText("playing!", 145, 50);
+  cxt.fillText(currentWord, 130, 160);
+  cxt.fillText(playerScore, 180, 185);
 });
